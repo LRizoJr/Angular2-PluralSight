@@ -5,9 +5,9 @@ import { Component } from '@angular/core'
     template: `
     <div>
         <h1>Upcoming Angular 2 Events</h1>    
-        <hr/>   
-        <event-thumbnail (eventClick)="handleEventClicked($event)" 
-            [event]="event1"></event-thumbnail>
+        <hr/>           
+        <event-thumbnail [event]="event1"></event-thumbnail>        
+        <button class="btn btn-primary">Log some foo</button>
     </div>
     `
 })
@@ -25,10 +25,5 @@ export class EventsListComponent {
             city: 'London',
             country: 'England'
         }
-    }
-
-    handleEventClicked(data) {
-        console.log('Received from child component: ', data);
-    }
-
+    }   
 }
