@@ -16,6 +16,7 @@ import { Router } from '@angular/router';
 })
 export class CreateEventComponent {
     private router:Router;
+    isDirty:boolean = true;
 
     constructor(routerParam:Router) {
         this.router = routerParam;
