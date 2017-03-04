@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { EventService } from './shared/event.service';
 import { PopupService } from '../common/popup.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
     template: `
@@ -15,15 +16,20 @@ import { PopupService } from '../common/popup.service';
     </div>
     `
 })
-export class EventsListComponent {
+export class EventsListComponent implements OnInit {
     private eventService;
     private popupService;
-    private events:any[];
-    
-    constructor(eventServ: EventService, popupServ: PopupService) {
+    private events:any;
+    private route:ActivatedRoute;
+
+    constructor(eventServ: EventService, popupServ: PopupService, routeParam:ActivatedRoute) {
         this.eventService = eventServ;
         this.popupService = popupServ;
-        this.events = this.eventService.getEvents();
+        this.route = routeParam;        
+    }
+
+    ngOnInit() {        
+        this.events = this.route.snapshot.data['events'];
     }
 
     handleThumbnailClick(eventName: string) {
