@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EventService } from './shared/event.service';
 import { PopupService } from '../common/popup.service';
 import { ActivatedRoute } from '@angular/router';
+import { IEvent } from './shared/event.model';
 
 @Component({
     template: `
@@ -19,7 +20,7 @@ import { ActivatedRoute } from '@angular/router';
 export class EventsListComponent implements OnInit {
     private eventService;
     private popupService;
-    private events:any;
+    private events:IEvent[];
     private route:ActivatedRoute;
 
     constructor(eventServ: EventService, popupServ: PopupService, routeParam:ActivatedRoute) {
